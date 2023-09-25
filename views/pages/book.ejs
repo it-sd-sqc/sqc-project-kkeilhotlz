@@ -1,6 +1,10 @@
 <%- include('../shared/header.ejs') %>
 
-
+<ul>
+    <% book.forEach((book) => { %>
+        <li><a href="/guide/<%= periods.id %>"><%= periods.count %></a></li>
+    <% }) %>
+  </ul>
 
 
 <%- include('../shared/footer.ejs') %>

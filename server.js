@@ -13,7 +13,6 @@ const pool = new Pool({
   }
 })
 
-// Query functions /////////////////////////////////////////
 export const query = async function (sql, params) {
   let client
   let results = []
@@ -30,6 +29,33 @@ export const query = async function (sql, params) {
   return results
 }
 
+express()
+  .use(express.static('public'))
+  .use(express.json())
+  .use(express.urlencoded({ extended: true }))
+
+  .set('views', 'views')
+  .set('view engine', 'ejs')
+.get('/', function (req, res) {
+  res.render('pages/index', {title: 'Home'})
+})
+
+.get('/about', function (req, res) {
+  res.render('pages/about', { title: 'About' })
+})
+
+.get('/book', function (req, res) {
+  res.render('pages/book', { title: 'Book' })
+})
+
+.get('/book', async function (req, res) {
+  const book = await queryBook()
+  res.render('pages/book', { title: 'Book Data' , book })
+})
+
+.listen(PORT, () => console.log(`Listening on ${PORT}`))
+
+
 // const app = express()
 
 // app.use(express.static('./public'))
@@ -39,13 +65,3 @@ export const query = async function (sql, params) {
 // }
 
 // app.listen(PORT, displayPort)
-
-.get('/', function (req, res) {
-  res.render('pages/index')
-})
-
-.get('/about', function (req, res) {
-  res.render('pages/about', { title: 'About' })
-})
-
-.listen(PORT, () => console.log(`Listening on ${PORT}`))
