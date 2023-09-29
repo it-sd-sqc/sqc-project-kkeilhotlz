@@ -1,7 +1,7 @@
 # A basic webpage
 Kohl Keilholtz
 
-A webpage with the proper qualifications as per stated in the assignment description
+A webpage with the proper qualifications as per stated in the assignement description
 
 
 ## ER Diagrams
@@ -33,6 +33,3 @@ erDiagram
     count INT "Count"
   }
 ---
-
-
-MOLLY can handle rejection
