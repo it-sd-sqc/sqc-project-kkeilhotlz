@@ -48,7 +48,7 @@ express()
   .set('view engine', 'ejs')
 
   .get('/', function (req, res) {
-    res.render('pages/index', { title: 'Home' })
+    res.render('pages/index')
   })
 
   .get('/about', function (req, res) {

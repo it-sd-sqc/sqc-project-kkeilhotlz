@@ -15,25 +15,14 @@ DROP TABLE IF EXISTS commas;
 DROP TABLE IF EXISTS the;
 DROP TABLE IF EXISTS and;
 
-CREATE TABLE periods (
+CREATE TABLE Commons (
 id SERIAL PRIMARY KEY,
-count INT NOT NULL
+countPeriod INT NOT NULL
+countComma INT NOT NULL
+countThe INT NOT NULL
+countAnd INT NOT NULL
 );
 
-CREATE·TABLE·commas·(
-id·SERIAL·PRIMARY·KEY,
-count·INT·NOT·NULL
-);
-
-CREATE·TABLE·the·(
-id·SERIAL·PRIMARY·KEY,
-count·INT·NOT·NULL
-);
-
-CREATE·TABLE·and·(
-id·SERIAL·PRIMARY·KEY,
-count·INT·NOT·NULL
-);
 `
 const insertCountPeriod = `INSERT INTO period (count) VALUES`
 
