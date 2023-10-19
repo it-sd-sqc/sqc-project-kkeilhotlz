@@ -1,4 +1,6 @@
-function DarkFunc() {
-    let darkPage = document.body;
-    darkPage.classList.toggle("dark");
-    }
+function DarkFunc () {
+  const darkPage = document.body
+  darkPage.classList.toggle('dark')
+}
+
+DarkFunc()

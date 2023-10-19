@@ -55,13 +55,9 @@ express()
     res.render('pages/about', { title: 'About' })
   })
 
-  .get('/book', function (req, res) {
-    res.render('pages/book', { title: 'Book' })
-  })
-
   .get('/book', async function (req, res) {
     // Call the queryBook function to get book data
-    const book = await queryBook(); // Assuming queryBook is a function you've defined elsewhere
+    const book = await queryBook() // Assuming queryBook is a function you've defined elsewhere
     res.render('pages/book', { title: 'Book Data', book })
   })
 
