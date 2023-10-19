@@ -9,7 +9,7 @@
   },
   "scripts": {
     "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard \"**/*.js\" && ejslint \"views/**/*.ejs\" && stylelint \"**/*.css\""
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "node-html-parser": "^6.1.10",
     "pg": "^8.11.3"

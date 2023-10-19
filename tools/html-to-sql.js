@@ -13,26 +13,6 @@ DROP TABLE IF EXISTS commas;
 DROP TABLE IF EXISTS the;
 DROP TABLE IF EXISTS and;
 
-CREATE TABLE periods (
-  id SERIAL PRIMARY KEY,
-  count INT NOT NULL
-);
-
-CREATE TABLE commas (
-  id SERIAL PRIMARY KEY,
-  count INT NOT NULL
-);
-
-CREATE TABLE the (
-  id SERIAL PRIMARY KEY,
-  count INT NOT NULL
-);
-
-CREATE TABLE and (
-  id SERIAL PRIMARY KEY,
-  count INT NOT NULL
-);
-`;
 
 const insertCountPeriod = `INSERT INTO periods (count) VALUES`;
 const insertCountComma = `INSERT INTO commas (count) VALUES`;

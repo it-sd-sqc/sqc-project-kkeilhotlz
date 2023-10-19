@@ -18,15 +18,25 @@ export const query = async function (sql, params) {
   let results = []
   try {
     client = await pool.connect()
-    const response = client.query(sql, params)
+    const response = await client.query(sql, params) // Add 'await' here
     if (response && response.rows) {
       results = response.rows
     }
   } catch (err) {
     console.error(err)
+  } finally {
+    if (client) client.release()
   }
-  if (client) client.release()
   return results
+}
+
+// Placeholder for queryBook function, replace it with your actual implementation
+const queryBook = async function () {
+  // Your implementation here
+  // For example, you might have a SQL query to fetch book data from the database
+  const sql = 'SELECT * FROM books'
+  const params = []
+  return await query(sql, params)
 }
 
 express()
@@ -36,32 +46,23 @@ express()
 
   .set('views', 'views')
   .set('view engine', 'ejs')
-.get('/', function (req, res) {
-  res.render('pages/index', {title: 'Home'})
-})
 
-.get('/about', function (req, res) {
-  res.render('pages/about', { title: 'About' })
-})
+  .get('/', function (req, res) {
+    res.render('pages/index')
+  })
 
-.get('/book', function (req, res) {
-  res.render('pages/book', { title: 'Book' })
-})
+  .get('/about', function (req, res) {
+    res.render('pages/about', { title: 'About' })
+  })
 
-.get('/book', async function (req, res) {
-  const book = await queryBook()
-  res.render('pages/book', { title: 'Book Data' , book })
-})
+  .get('/book', function (req, res) {
+    res.render('pages/book', { title: 'Book' })
+  })
 
-.listen(PORT, () => console.log(`Listening on ${PORT}`))
+  .get('/book', async function (req, res) {
+    // Call the queryBook function to get book data
+    const book = await queryBook(); // Assuming queryBook is a function you've defined elsewhere
+    res.render('pages/book', { title: 'Book Data', book })
+  })
 
-
-// const app = express()
-
-// app.use(express.static('./public'))
-
-// const displayPort = function () {
-//   console.log('Listening on ' + PORT)
-// }
-
-// app.listen(PORT, displayPort)
+  .listen(PORT, () => console.log(`Listening on ${PORT}`))
