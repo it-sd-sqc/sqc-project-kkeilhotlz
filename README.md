@@ -5,7 +5,9 @@ A webpage with the proper qualifications as per stated in the assignement descri
 
 Render link: https://kkeilholtzbasicwebpage.onrender.com/
 Hello from Tawna!
+
 ## ER Diagrams
+
 ```mermaid
 
 ---
