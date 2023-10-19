@@ -13,6 +13,13 @@ DROP TABLE IF EXISTS commas;
 DROP TABLE IF EXISTS the;
 DROP TABLE IF EXISTS and;
 
+CREATE TABLE data (
+  id Serial Primary Key,
+  countPeriods INT NOT NULL,
+  countCommas INT NOT NULL,
+  countThe INT NOT NULL,
+  countAnd INT NOT NULL,
+);
 CREATE TABLE periods (
   id SERIAL PRIMARY KEY,
   count INT NOT NULL
@@ -30,6 +37,11 @@ CREATE TABLE and (
   count INT NOT NULL
 );
 `
+const insertCountPeriodAllData = 'INSERT INTO data (countPeriods) VALUES'
+const insertCountCommaAllData = 'INSERT INTO data (countCommas) VALUES'
+const insertCountTheAllData = 'INSERT INTO data (countThe) VALUES'
+const insertCountAndAllData = 'INSERT INTO data (countAnd) VALUES'
+
 const insertCountPeriod = 'INSERT INTO periods (count) VALUES'
 const insertCountComma = 'INSERT INTO commas (count) VALUES'
 const insertCountThe = 'INSERT INTO the (count) VALUES'
@@ -100,5 +112,10 @@ writeFileSync(fd, `${insertCountPeriod} (${countPeriod(textContent)})\n`)
 writeFileSync(fd, `${insertCountComma} (${countComma(textContent)})\n`)
 writeFileSync(fd, `${insertCountThe} (${countThe(textContent)})\n`)
 writeFileSync(fd, `${insertCountAnd} (${countAnd(textContent)})\n`)
+
+writeFileSync(fd, `${insertCountPeriodAllData} (${countPeriod(textContent)})\n`)
+writeFileSync(fd, `${insertCountCommaAllData} (${countComma(textContent)})\n`)
+writeFileSync(fd, `${insertCountTheAllData} (${countThe(textContent)})\n`)
+writeFileSync(fd, `${insertCountAndAllData} (${countAnd(textContent)})\n`)
 
 closeSync(fd)
