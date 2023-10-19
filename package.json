@@ -1,0 +1,30 @@
+{
+  "name": "sqc-project-kkeilhotlz",
+  "version": "1.0.0",
+  "description": "Kohl Keilholtz",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "generate": "node tools/html-to-sql.js && psql -U postgres -f ./docs/generated-schema.sql",
+    "test": "standard \"**/*.js\" && ejslint \"views/**/*.ejs\" && stylelint \"**/*.css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-validate": "^8.4.0",
+    "standard": "^17.1.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node-html-parser": "^6.1.10",
+    "pg": "^8.11.3"
+  }
+}

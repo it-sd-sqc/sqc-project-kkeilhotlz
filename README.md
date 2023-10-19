@@ -1,4 +1,35 @@
-# Your project name
-Your given and family name.
+# A basic webpage
+Kohl Keilholtz
 
-A one-sentence description of your project.
+A webpage with the proper qualifications as per stated in the assignement description
+
+
+## ER Diagrams
+```mermaid
+
+---
+title: Kohl Keilholtz Project ER diagrams
+Hello from Tawna!
+---
+erDiagram
+
+  periods {
+    id Serial pk
+    count INT "Count"
+  }
+
+  commas {
+    id Serial pk
+    count INT "Count"
+  }
+
+  the {
+    id Serial pk
+    count INT "Count"
+  }
+
+  and {
+    id Serial pk
+    count INT "Count"
+  }
+---
