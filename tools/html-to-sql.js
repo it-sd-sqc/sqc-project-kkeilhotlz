@@ -1,5 +1,4 @@
 // Dependencies
-import assert from 'assert'
 import { closeSync, openSync, readFileSync, writeFileSync } from 'fs'
 import { parse } from 'node-html-parser'
 

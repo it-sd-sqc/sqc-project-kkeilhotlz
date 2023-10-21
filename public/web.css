@@ -16,6 +16,17 @@
   padding: 20px;
 }
 
-.headText {
+.head {
     text-align: center;
+}
+
+.main {
+  text-align: center;
+}
+
+table, th, td {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  border: 2px solid;
 }

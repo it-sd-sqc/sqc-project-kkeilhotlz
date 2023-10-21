@@ -18,7 +18,7 @@ export const query = async function (sql, params) {
   let results = []
   try {
     client = await pool.connect()
-    const response = await client.query(sql, params) // Add 'await' here
+    const response = await client.query(sql, params)
     if (response && response.rows) {
       results = response.rows
     }
@@ -30,13 +30,31 @@ export const query = async function (sql, params) {
   return results
 }
 
-// Placeholder for queryBook function, replace it with your actual implementation
+// var mysql = require('mysql');
+// var con = mysql.createConnection({
+//   host: "localhost",
+//   user: "yourusername",
+//   password: "yourpassword",
+//   database: "mydb"
+// });
+// con.connect(function(err) {
+//   if (err) throw err;
+//   con.query("SELECT * FROM customers", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+// });
+
+// const queryBook = async function (id) {
+//   const sql = `SELECT * from data;`
+//   const results = await query(sql, [id])
+//   return results.length === 1 ? results[0] : []
+// }
+
 const queryBook = async function () {
-  // Your implementation here
-  // For example, you might have a SQL query to fetch book data from the database
-  const sql = 'SELECT * FROM data'
-  const params = []
-  return await query(sql, params)
+  const sql = 'SELECT * From data;'
+  const results = await query(sql)
+  return results
 }
 
 express()
@@ -55,15 +73,9 @@ express()
     res.render('pages/about', { title: 'About' })
   })
 
-// .get('/book', async function (req, res) {
-//   // Call the queryBook function to get book data
-//   const book = await queryBook() // Assuming queryBook is a function you've defined elsewhere
-//   res.render('pages/book', { title: 'Book Data', book })
-// })
-
   .get('/book', async function (req, res) {
-    const data = await query('SELECT * FROM data')
-    res.render('pages/book', { data })
+    const data = await queryBook()
+    res.render('pages/book', { title: 'Book', data })
   })
 
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
